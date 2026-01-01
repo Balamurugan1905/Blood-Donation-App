@@ -302,11 +302,15 @@ const handleSubmit = async (e) => {
                   Register as Donor
                 </button>
               </div>
+            
             </div>
+            
           </div>
         )}
       </div>
+
     </div>
+    
   );
 };
 

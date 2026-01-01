@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
 import BloodDonationApp from './components/BloodDonationApp'
+import Footer from './components/Footer'
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path='/' element={<BloodDonationApp/>}/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )

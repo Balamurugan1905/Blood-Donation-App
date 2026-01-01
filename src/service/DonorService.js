@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const REST_API_URL = 'http://localhost:8080/donors'
+const REST_API_URL = 'https://saveone.onrender.com/donors'
 
 export const listAllDonor = () => axios.get(REST_API_URL)
 

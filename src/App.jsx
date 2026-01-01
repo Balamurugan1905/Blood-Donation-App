@@ -8,7 +8,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/bda' element={<BloodDonationApp/>}/>
+          <Route path='/' element={<BloodDonationApp/>}/>
         </Routes>
       </BrowserRouter>
     </>

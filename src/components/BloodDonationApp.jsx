@@ -35,17 +35,53 @@ useEffect(() => {
     });
   };
 
+  // ===== Validation Function =====
+  const validateForm = () => {
+    if (formData.name.trim() === "") {
+      alert("Name is required");
+      return false;
+    }
+
+    if (!/^\d{10}$/.test(formData.phone)) {
+      alert("Phone number must be 10 digits");
+      return false;
+    }
+
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      alert("Enter valid email");
+      return false;
+    }
+
+    if (formData.bloodGroup === "") {
+      alert("Select blood group");
+      return false;
+    }
+
+    if (formData.age && (formData.age < 18 || formData.age > 65)) {
+      alert("Age must be between 18 and 65");
+      return false;
+    }
+
+    if (formData.location.trim() === "") {
+      alert("Location is required");
+      return false;
+    }
+
+    return true;
+  };
+
 const handleSubmit = async (e) => {
   e.preventDefault();
-  if (formData.name && formData.phone && formData.bloodGroup) {
-    try {
-      const response = await insertDonor(formData);
-      setDonors(prev => [...prev, response.data]);
-      setFormData({ name: '', phone: '', email: '', bloodGroup: '', location: '', age: '' });
-      setActiveTab('donors');
-    } catch (err) {
-      console.error('Error adding donor:', err);
-    }
+
+  if (!validateForm()) return;
+
+  try {
+    const response = await insertDonor(formData);
+    setDonors(prev => [...prev, response.data]);
+    setFormData({ name: '', phone: '', email: '', bloodGroup: '', location: '', age: '' });
+    setActiveTab('donors');
+  } catch (err) {
+    console.error('Error adding donor:', err);
   }
 };
 

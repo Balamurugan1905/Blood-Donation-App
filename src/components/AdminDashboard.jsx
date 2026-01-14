@@ -13,7 +13,7 @@ const AdminDashboard = () => {
 
   const fetchDonors = async () => {
     try {
-      const res = await fetch("http://localhost:8080/donors");
+      const res = await fetch("https://saveone.onrender.com/donors");
       const data = await res.json();
       setDonors(data);
     } catch (err) {
@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     if (!validateEditForm()) return;
 
     try {
-      await fetch(`http://localhost:8080/donors/${editDonor.id}`, {
+      await fetch(`https://saveone.onrender.com/donor/${editDonor.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const AdminDashboard = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this donor?")) return;
     try {
-      await fetch(`http://localhost:8080/donors/${id}`, {
+      await fetch(`https://saveone.onrender.com/donor${id}`, {
         method: 'DELETE'
       });
       fetchDonors();

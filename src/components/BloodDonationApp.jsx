@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Phone, Plus, Users, Heart, Calendar, MapPin, User, Mail, Search, Filter } from 'lucide-react';
 import './BloodDonationApp.css';
 import { insertDonor, listAllDonor } from '../service/DonorService';
@@ -6,6 +7,8 @@ import { insertDonor, listAllDonor } from '../service/DonorService';
 const BloodDonationApp = () => {
   const [activeTab, setActiveTab] = useState('donors');
   const [donors, setDonors] = useState([]);
+  const navigate = useNavigate();
+
 
 useEffect(() => {
   listAllDonor()
@@ -123,6 +126,15 @@ const handleSubmit = async (e) => {
               <Plus size={18} />
               Add Donor
             </button>
+            <button
+  onClick={() => navigate("/adlogin")}
+  className={`nav-button ${activeTab === 'admin' ? 'active' : ''}`}
+>
+  <User size={18} />
+  Admin
+</button>
+
+
           </nav>
         </div>
         <marquee>
